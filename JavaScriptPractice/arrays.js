@@ -66,3 +66,48 @@ console.log(sum); //To print the sum of all elements of the array
 
 
 console.log("Checking for auto suggestion");
+
+
+console.log(marks.reduce((sum,marks)=>sum+marks,0));
+
+
+//Find and pick the even numbers from an array and create a new array
+
+console.log("******************************************")
+
+var scores = [10,21,32,44,51,23];
+
+var scores1=[];
+
+for(let m=0;m<scores.length;m++){
+
+    if(scores[m]%2==0){
+
+        scores1.push(scores[m]);
+    }
+}
+
+console.log(scores1)
+
+
+//Performing the same using filter
+
+let newFilterScore = scores.filter(score=>score%2==0);
+
+console.log("Using filter function")
+
+console.log(newFilterScore);
+
+//Using map function
+
+let newMappedArray = newFilterScore.map(score=>score*3);
+
+console.log(newMappedArray);
+
+//Sorting of numbers
+
+let values=[12,3,19,16,14];
+
+console.log(values.sort((a,b)=>a-b)); // Recursive bubble sort
+
+console.log(values.sort((a,b)=>b-a)); // Descending order
