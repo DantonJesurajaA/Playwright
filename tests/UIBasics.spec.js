@@ -14,6 +14,19 @@ test.only('First test', async ({browser})=>{ //This is another way to declare an
 
     //await browser.close();
 
+    await page.locator("#username").fill("danton");
+
+    await page.locator("[name='password']").fill("123");
+
+    let error = await page.locator("[style*='display']").textContent();
+
+    console.log(error);
+
+    //Asserting whether the error contains the appropriate text
+
+    await expect(page.locator("[style*='display']")).toContainText(error);
+
+
     let details = await page.locator("p.text-center").innerText();
 
    await console.log(details);
@@ -24,9 +37,21 @@ test.only('First test', async ({browser})=>{ //This is another way to declare an
 
    let password = arr[6];
 
+   let password1 = password.slice(0,password.length-1);
+
+   await console.log(username);
+
+   await console.log(password1);
+
     await page.locator("#username").fill(username);
 
-    await page.locator("[name='password']").fill(password);
+    await page.locator("[name='password']").fill(password1);
+
+    await page.locator("#signInBtn").click();
+
+    console.log(await page.locator(".card-body a").first().innerText());
+
+    console.log(await page.locator(".card-body a").nth(1).innerText() );
 
 }
 
