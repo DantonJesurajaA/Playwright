@@ -2,7 +2,7 @@ const {test,expect} = require ('@playwright/test');
 
 //test('Firsttest', async function(){}) - This is one way to declare an anonymous function
 
-test.only('First test', async ({browser})=>{ //This is another way to declare anonymous function
+test('First test', async ({browser})=>{ //This is another way to declare anonymous function
 
    // await console.log("First test");
 
@@ -73,6 +73,86 @@ test('Second Test', async ({page})=>
 
 
 }
+
+
+)
+
+test('Dropdown and Radio', async ({page})=>{
+
+ await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+
+ const dropdown = page.locator("select.form-control");
+
+ const radioLast = page.locator("span.checkmark").last();
+
+ const okaybtn = page.locator("#okayBtn");
+
+ const blinkingUI = page.locator("a.blinkingText").first();
+
+ await dropdown.selectOption("Teacher");
+
+ await radioLast.click();
+
+ await okaybtn.click();
+
+ await expect(radioLast).toBeChecked();
+
+ console.log(await radioLast.isChecked());
+
+ //await page.pause();
+
+ //To verify if the page has a blinking UI element
+
+ 
+await expect(blinkingUI).toHaveAttribute("class", "blinkingText");
+
+
+}
+
+
+
+
+
+
+
+)
+
+
+test.only('Child window Handling', async ({browser})=>{
+
+ const context = await browser.newContext();
+ 
+ const page = await context.newPage();
+
+ await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+
+ const documentPage = page.locator("a.blinkingText").first();   
+ 
+ const [newPage] = await Promise.all([
+
+ context.waitForEvent('page'), //Listen for any new page to be opened
+
+ documentPage.click()
+
+ ] // New page is opened
+)
+
+console.log(await newPage.locator(".red").innerText());
+
+const line = await newPage.locator(".red").innerText();
+
+let terms = line.split("@");
+
+let username = terms[1].split(" ")[0];
+
+console.log(username);
+
+await page.locator("#username").fill(username);
+
+console.log(await page.locator("#username").inputValue());
+
+}
+
 
 
 )

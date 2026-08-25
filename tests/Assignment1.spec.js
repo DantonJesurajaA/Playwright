@@ -17,6 +17,10 @@ test('Assignment',  async ({ page }) => {
     await password.fill("Danton@2710");
     await login.click();
 
+    //Waiting for all the contents to be loaded
+
+    await page.waitForLoadState('networkidle')
+
     //Getting all the titles in the page
 
     console.log(await page.locator("div.card-body b").first().innerText());
