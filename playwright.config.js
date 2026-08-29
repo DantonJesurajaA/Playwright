@@ -16,6 +16,11 @@ export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
 
+use: {
+    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
+    actionTimeout: 10000,
+  },
+
   timeout: 30000,
   expect:{
     timeout: 4000
@@ -30,13 +35,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-  },
 
   /* Configure projects for major browsers */
   projects: [
