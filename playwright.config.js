@@ -19,6 +19,7 @@ export default defineConfig({
 use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 10000,
+    
   },
 
   timeout: 30000,

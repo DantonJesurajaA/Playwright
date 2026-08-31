@@ -13,6 +13,13 @@ test('Special Locators', async({page})=>{
     await page.getByRole("link",{name : "Shop"}).click();
     await page.locator("app-card").filter({hasText: 'Nokia Edge'}).getByRole("button").click();
 
+    //When will getByLabel work for entering data?
+    //1. When the label tag encloses the input tag as well
+    //2. When the label tag and input tag are linked
+
+        
+
+
 }
 
 )
