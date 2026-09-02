@@ -1,4 +1,6 @@
 const {test,expect} = require ('@playwright/test');
+//import { format } from 'date-fns';
+const { format } = require('date-fns');
 
 //test('Firsttest', async function(){}) - This is one way to declare an anonymous function
 
@@ -118,7 +120,7 @@ await expect(blinkingUI).toHaveAttribute("class", "blinkingText");
 )
 
 
-test.only('Child window Handling', async ({browser})=>{
+test('Child window Handling', async ({browser})=>{
 
  const context = await browser.newContext();
  
@@ -153,6 +155,25 @@ console.log(await page.locator("#username").inputValue());
 
 }
 
+
+
+)
+
+test.only('Sample Test', async ()=>
+{
+
+   
+
+const now = new Date();
+
+// Standard custom format
+console.log(format(now, 'yyyy-MM-dd HH:mm:ss'));
+// Output: "2026-08-31 19:05:00"
+
+// Long, readable format
+console.log(format(now, 'PPPPpppp'));
+// Output: "Monday, August 31st, 2026 at 7:05:00 PM GMT+5"
+}
 
 
 )

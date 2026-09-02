@@ -104,10 +104,10 @@ test('Full Booking Flow with Event Creation', async ({page})=>{
  let ticketCount = await page.locator("#ticket-count").innerText();
  //await console.log(ticketCount);
  await expect(ticketCount == '1').toBeTruthy();
- await page.getByLabel("Full Name").fill("Maria Nevis Danton Jesuraja");
- await page.locator("#customer-email").fill("danton1@gmail.com");
- await page.getByPlaceholder("+91 98765 43210").fill("7200400604");
- await page.locator(".confirm-booking-btn").click();
+    await page.getByLabel("Full Name").fill("Maria Nevis Danton Jesuraja");
+    await page.locator("#customer-email").fill("danton1@gmail.com");
+    await page.getByPlaceholder("+91 98765 43210").fill("7200400604");
+    await page.locator(".confirm-booking-btn").click();
  await expect(page.locator(".booking-ref")).toBeVisible();
  let bookingRef = await page.locator(".booking-ref").innerText();
  //await console.log(bookingRef);
